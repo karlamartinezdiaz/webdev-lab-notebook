@@ -19,7 +19,7 @@ const addBookToDOM = (item) => {
 
   title.textContent = item.name;
   author.textContent = `by ${item.authors[0]}`;
-  published.textContent = item.released.substr(0, 4);
+  published.textContent = new Date(item.released).getFullYear();
   pages.textContent = `${item.numberOfPages} pages`;
 
   element.append(title);
@@ -40,12 +40,14 @@ const fetchData = (url) => {
     })
     .catch((error) => {
       console.log(error);
-      let li = document.createElement('li');
-      li.textContent = `An error occured. Please try again.`;
-      app.append(li);
+      let li = document.createElement('p');
+      errorMsg.textContent = 'An error occurred. Please try again.';
+      app.append(errorMsg);
     })
     .finally(() => {
-      app.removeChild(loading);
+      if (loading){
+        loading.remove();
+      }
     });
 };
 

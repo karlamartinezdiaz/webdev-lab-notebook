@@ -30,8 +30,8 @@ const mapNameFamily = (characters) => {
 
 const filterFamily = (characters, house) => {
   // Return an array with only the characters from a given house
-  const houses = characters.filter((item) => item.house === house);
-  return houses;
+  const filter = characters.filter((item) => item.house === house);
+  return filter;
 };
 
 const reduceHouses = (characters) => {
@@ -39,9 +39,8 @@ const reduceHouses = (characters) => {
   const houses = characters.reduce(
     (acc, curr) => {
       acc.hasOwnProperty(curr.house)
-        ? acc[curr.house]++ //true
-        : (acc[curr.house] = 1); //false
-      return acc;
+        acc[item.house] = acc[item.house] ? acc[item.house] + 1 : 1;
+        return acc;
     },
     {}
   );

@@ -43,6 +43,6 @@ userInput2.addEventListener('input', handleInput);
 
 // Callback function to handle event
 function handleInput(event) {
-  console.log('click event', event);
+  console.log('input event', event);
   output2.textContent = userInput2.value;
 }
